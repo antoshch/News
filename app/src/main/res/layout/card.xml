@@ -8,7 +8,8 @@
     card_view:contentPadding="8dp"
     card_view:cardBackgroundColor="@color/primary_bgr"
     card_view:cardUseCompatPadding="true"
-    card_view:cardCornerRadius="4dp">
+    card_view:cardCornerRadius="4dp"
+    style="@style/CardView">
 
     <RelativeLayout
         android:id="@+id/articleLayout"
@@ -23,6 +24,7 @@
             android:scaleType="centerCrop"
             android:id="@+id/stgvImageView"
             />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,12 +37,13 @@
 
             android:textSize="20dp"
             android:id="@+id/siteurl"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            android:clickable="false" />
+
         <View android:layout_width="match_parent" android:layout_height="68dp"
-            android:layout_alignRight="@+id/stgvImageView"
             android:layout_alignTop="@+id/stgvImageView"
             android:layout_alignLeft="@+id/stgvImageView"
-            />
+            android:layout_alignRight="@+id/stgvImageView" />
         <LinearLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/stgvImageView"
@@ -58,7 +61,8 @@
                 android:layout_marginBottom="16dp"
                 android:paddingRight="8dp"
                 android:paddingLeft="0dp"
-                android:autoText="true" />
+                android:autoText="false" />
+
             <RelativeLayout android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 >
@@ -77,6 +81,7 @@
                     android:baselineAligned="false"
                     android:paddingRight="4dp"
                     android:paddingLeft="0dp">
+
                     <ImageView
                         android:id="@+id/userAva"
                         android:layout_width="20dp"
