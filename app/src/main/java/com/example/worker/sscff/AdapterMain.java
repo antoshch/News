@@ -96,9 +96,9 @@ public class AdapterMain extends RecyclerView.Adapter<AdapterMain.ViewHolder> {
         final String url = item.getLink();
         aq.id(viewHolder.cardView).clicked(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 try {
-                    Intent i = new Intent(Intent.ACTION_VIEW);
+                    Intent i = new Intent(activity, DescriptionActivity.class);
                     i.setData(Uri.parse(url));
                     activity.startActivity(i);
                 }

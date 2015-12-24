@@ -40,10 +40,6 @@
             android:visibility="gone"
             android:clickable="false" />
 
-        <View android:layout_width="match_parent" android:layout_height="68dp"
-            android:layout_alignTop="@+id/stgvImageView"
-            android:layout_alignLeft="@+id/stgvImageView"
-            android:layout_alignRight="@+id/stgvImageView" />
         <LinearLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/stgvImageView"
@@ -64,8 +60,7 @@
                 android:autoText="false" />
 
             <RelativeLayout android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
+                android:layout_height="wrap_content">
 
                 <LinearLayout
                     android:id="@+id/authorLayout"

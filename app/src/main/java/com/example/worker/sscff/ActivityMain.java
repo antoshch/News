@@ -64,7 +64,7 @@ public class ActivityMain extends Activity implements SwipeRefreshLayout.OnRefre
     }
 
     public void request(String url) {
-        aq.ajax(url, XmlDom.class,this,"onRequest");
+        aq.ajax(url, XmlDom.class, this, "onRequest");
         swipeRefreshLayout.setRefreshing(true);
     }
 
@@ -115,18 +115,35 @@ public class ActivityMain extends Activity implements SwipeRefreshLayout.OnRefre
                 item.setDate(date);
 
                 //Получаем изображение
-                String src = "";
-                try {
-                    description = description.replace(".png\">",".png\"/>").replace(".jpg\">",".jpg\"/>");
+                String src1 = "";
+                String src2 = "";
 
-                    src = new XmlDom("<xml>"+description+"</xml>").tag("img").attr("src");
-                    if (src.startsWith("//") ) {
-                        src = "http:"+src;
+                try {
+                    //description = description.replace(".png\">",".png\"/>").replace(".jpg\">",".jpg\"/>");
+
+                    src1 = new XmlDom("<xml>"+description+"</xml>").tag("img").attr("src");
+                    if (src1.startsWith("//") ) {
+                        src1 = "http:"+src1;
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                item.setImg(src);
+
+                try {
+                    description = description.replace(".png\">",".png\"/>").replace(".jpg\">",".jpg\"/>");
+
+                    src2 = new XmlDom("<xml>"+description+"</xml>").tag("img").attr("src");
+                    if (src2.startsWith("//") ) {
+                        src2 = "http:"+src2;
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                if (src1 != "") {
+                    item.setImg(src1);
+                }
+                item.setImg(src2);
 
                 //
                 items.add(item);
@@ -151,8 +168,8 @@ public class ActivityMain extends Activity implements SwipeRefreshLayout.OnRefre
         if(isTaskRoot()){
 
             //clean the file cache with advance option
-            long triggerSize = 3000000; //starts cleaning when cache size is larger than 3M
-            long targetSize = 2000000;      //remove the least recently used files until cache size is less than 2M
+            long triggerSize = 6000000; //starts cleaning when cache size is larger than 3M
+            long targetSize = 5000000;      //remove the least recently used files until cache size is less than 2M
             AQUtility.cleanCacheAsync(this, triggerSize, targetSize);
         }
 
